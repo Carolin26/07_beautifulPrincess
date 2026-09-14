@@ -1,0 +1,45 @@
+:root {
+  /* ── Colores ── */
+  --color-bg: #faf7f2;
+  --color-bg-alt: #efe7d6;
+  --color-text: #1c1a16;
+  --color-text-muted: #7a6e5f;
+  --color-primary: #b8976a;
+  --color-accent: #c9a96e;
+  --color-error: #994a3d;
+  --color-light: #faf7f2;
+  --color-border: rgba(184, 151, 106, 0.25);
+  --color-primary-muted: rgba(184, 151, 106, 0.35);
+  --color-bg-translucido: rgba(250, 247, 242, 0.96);
+  --color-blanco-suave: rgba(255, 255, 255, 0.92);
+  --color-sobre-foto: rgba(250, 247, 242, 0.92);
+  --color-blanco-tenue: rgba(255, 255, 255, 0.5);
+
+  /* ── Tipografías ── */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
+
+  /* ── Espaciados ── */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 144px;
+
+  /* ── Layout ── */
+  --container-max: 1135px;
+  --container-pad: 56px;
+
+  /* ── Otros ── */
+  --transition: 300ms ease;
+  --transition-media: 500ms ease;
+  --transition-lenta: 700ms ease;
+  --transition-fundido: 1000ms ease;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-pad: 24px;
+  }
+}

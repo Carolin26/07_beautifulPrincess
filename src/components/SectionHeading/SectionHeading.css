@@ -1,0 +1,23 @@
+.encabezado--center {
+  text-align: center;
+}
+
+.encabezado__etiqueta {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.encabezado__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.encabezado__titulo em {
+  font-style: italic;
+}

@@ -1,0 +1,33 @@
+.producto__imagen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.producto__nombre {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-text);
+  margin-top: var(--space-sm);
+}
+
+.producto__material {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+}
+
+.producto__precio {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--color-accent);
+  margin-top: 4px;
+}
+
+.producto__accion {
+  display: grid;
+  margin-top: var(--space-sm);
+}

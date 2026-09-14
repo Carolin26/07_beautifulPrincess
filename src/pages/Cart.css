@@ -1,0 +1,234 @@
+.carrito {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.carrito__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+}
+
+.carrito__contenido {
+  display: grid;
+  grid-template-columns: 623px 360px;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.carrito__lineas {
+  list-style: none;
+}
+
+.linea {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.linea__imagen {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.linea__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.linea__nombre {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.linea__material {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+}
+
+.linea__quitar {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+
+.linea__quitar:hover {
+  color: var(--color-primary);
+}
+
+.linea__acciones {
+  display: contents;
+}
+
+.linea__stepper {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.linea__paso,
+.linea__cantidad {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-primary-muted);
+  border-radius: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.linea__paso {
+  position: relative;
+  background: none;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.linea__paso:hover {
+  background: var(--color-bg-alt);
+}
+
+.linea__cantidad {
+  margin: 0 -1px;
+}
+
+.linea__total {
+  width: 80px;
+  flex-shrink: 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 28px;
+  text-align: right;
+}
+
+.resumen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-bg-alt);
+  padding: 32px;
+}
+
+.resumen__titulo {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.resumen__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+}
+
+.resumen__etiqueta {
+  color: var(--color-text-muted);
+}
+
+.resumen__valor {
+  color: var(--color-text);
+}
+
+.resumen__divisor {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.resumen__fila--total .resumen__etiqueta {
+  color: var(--color-text);
+}
+
+.resumen__total {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.carrito__vacio {
+  max-width: 512px;
+  margin: 0 auto;
+  padding: var(--space-2xl) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.carrito__vacio-titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.carrito__vacio-texto {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 23px;
+}
+
+.carrito__vacio-accion {
+  padding-top: var(--space-sm);
+}
+
+@media (max-width: 1023px) {
+  .carrito__contenido {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .linea {
+    flex-wrap: wrap;
+  }
+
+  .linea__acciones {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 116px;
+  }
+
+  .linea__paso::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+  }
+}

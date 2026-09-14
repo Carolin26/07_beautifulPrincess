@@ -1,0 +1,10 @@
+.etiqueta {
+  background: var(--color-light);
+  color: var(--color-text);
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.5625rem;
+  letter-spacing: 0.22em;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}

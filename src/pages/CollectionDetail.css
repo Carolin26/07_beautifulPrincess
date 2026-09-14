@@ -1,0 +1,59 @@
+.coleccion {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.coleccion__encabezado {
+  margin-bottom: var(--space-xl);
+}
+
+.coleccion__sobretitulo {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.coleccion__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.coleccion__descripcion {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-top: var(--space-sm);
+}
+
+.coleccion__conteo {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  margin-top: var(--space-xs);
+}
+
+.coleccion__grilla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-lg);
+  row-gap: var(--space-xl);
+}
+
+@media (max-width: 1023px) {
+  .coleccion__grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .coleccion__grilla {
+    grid-template-columns: 1fr;
+  }
+}

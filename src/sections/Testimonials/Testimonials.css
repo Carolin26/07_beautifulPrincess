@@ -1,0 +1,103 @@
+.testimonios {
+  background-color: var(--color-bg-alt);
+  padding: 112px 0;
+}
+
+.testimonios__contenedor {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  text-align: center;
+}
+
+.testimonios__contenedor .encabezado__titulo {
+  font-size: 40px;
+}
+
+.testimonios__lista {
+  position: relative;
+  min-height: 200px;
+  margin-top: var(--space-lg);
+}
+
+.testimonios__item {
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity var(--transition);
+}
+
+.testimonios__estrellas {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.testimonios__cita {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-top: var(--space-md);
+}
+
+.testimonios__nombre {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+  margin-top: var(--space-md);
+}
+
+.testimonios__rol {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.testimonios__puntos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--space-lg);
+}
+
+.testimonios__punto {
+  width: 12px;
+  height: 1px;
+  background-color: var(--color-primary-muted);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition:
+    width var(--transition),
+    background-color var(--transition);
+}
+
+.testimonios__punto::after {
+  content: "";
+  position: absolute;
+  inset: -10px 0;
+}
+
+.testimonios__punto:hover {
+  background-color: var(--color-primary);
+}
+
+.testimonios__punto--activo {
+  width: 32px;
+  background-color: var(--color-primary);
+}
+
+@media (max-width: 767px) {
+  .testimonios__cita {
+    font-size: 18px;
+  }
+
+  .testimonios__lista {
+    min-height: 280px;
+  }
+}

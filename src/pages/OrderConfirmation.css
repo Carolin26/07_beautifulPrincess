@@ -1,0 +1,130 @@
+.confirmacion {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.confirmacion__cargando {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding-top: var(--space-xl);
+}
+
+.confirmacion__contenido,
+.confirmacion__aviso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.confirmacion__ornamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-primary);
+  font-size: 22px;
+}
+
+.confirmacion__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1.15;
+  margin-top: var(--space-lg);
+}
+
+.confirmacion__orden {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: var(--space-md);
+}
+
+.confirmacion__correo {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: var(--space-sm);
+}
+
+.confirmacion__correo--fallido {
+  color: var(--color-error);
+  max-width: 420px;
+}
+
+.confirmacion__resumen {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-bg-alt);
+  padding: 32px;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  text-align: left;
+}
+
+.confirmacion__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+}
+
+.confirmacion__fila-etiqueta {
+  color: var(--color-text-muted);
+}
+
+.confirmacion__fila-valor {
+  color: var(--color-text);
+}
+
+.confirmacion__divisor {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.confirmacion__fila--total .confirmacion__fila-etiqueta {
+  color: var(--color-text);
+}
+
+.confirmacion__total {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.confirmacion__error {
+  color: var(--color-error);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 420px;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 767px) {
+  .confirmacion {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-xl);
+  }
+
+  .confirmacion__titulo {
+    font-size: 40px;
+  }
+}

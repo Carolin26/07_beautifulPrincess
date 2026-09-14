@@ -1,0 +1,129 @@
+.craftsmanship {
+  padding: var(--space-2xl) var(--container-pad);
+}
+
+.craftsmanship__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 112px;
+}
+
+.craftsmanship__columna-imagen {
+  position: relative;
+}
+
+.craftsmanship__imagen-contenedor {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.craftsmanship__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.craftsmanship__insignia {
+  position: absolute;
+  bottom: -32px;
+  right: -32px;
+  max-width: 200px;
+  padding: var(--space-md);
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+}
+
+.craftsmanship__insignia-numero {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--color-primary);
+}
+
+.craftsmanship__insignia-texto {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+}
+
+.craftsmanship__parrafo {
+  margin-top: var(--space-md);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.craftsmanship__estadisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.craftsmanship__estadistica-numero {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--color-primary);
+}
+
+.craftsmanship__estadistica-etiqueta {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.craftsmanship__enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.craftsmanship__enlace:hover {
+  color: var(--color-text);
+}
+
+.craftsmanship__enlace-icono {
+  transition: transform var(--transition);
+}
+
+.craftsmanship__enlace:hover .craftsmanship__enlace-icono {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1023px) {
+  .craftsmanship__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .craftsmanship__insignia {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .craftsmanship__insignia-numero {
+    font-size: 32px;
+  }
+
+  .craftsmanship__estadistica-numero {
+    font-size: 24px;
+  }
+}

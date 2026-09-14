@@ -1,0 +1,41 @@
+.marquee {
+  background: var(--color-primary);
+  overflow: hidden;
+  padding: 14px 0;
+}
+
+.marquee__pista {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-deslizar 60s linear infinite;
+}
+
+.marquee__grupo {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marquee__mensaje {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-light);
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.marquee__rombo {
+  margin: 0 var(--space-sm);
+  opacity: 0.4;
+}
+
+@keyframes marquee-deslizar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
