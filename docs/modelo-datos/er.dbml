@@ -1,0 +1,52 @@
+// ============================================================
+// Modelo Entidad-Relación — Beautiful Princess
+// Cargo con dbdiagram.io (https://dbdiagram.io) o draw.io.
+//
+// Los nombres de campo coinciden con las claves de los JSON
+// del Hito 2 (shared/catalogo.js, api/crear-sesion-pago.js,
+// api/confirmar-orden.js).
+// ============================================================
+
+Table Coleccion {
+  id          int          [pk, increment]
+  slug        varchar(50)  [not null, unique]
+  titulo      varchar(100) [not null]
+  descripcion text
+  etiqueta    varchar(60)
+  imagen      varchar(255) [not null]
+}
+
+Table Producto {
+  id          int          [pk, increment]
+  nombre      varchar(120) [not null]
+  precio      int          [not null] // centavos de USD
+  descripcion text
+  material    varchar(100)
+  coleccionId int          [ref: > Coleccion.id, not null]
+  imagen      varchar(255) [not null]
+}
+
+Table Cliente {
+  id     int          [pk, increment]
+  nombre varchar(120) [not null]
+  correo varchar(160) [not null, unique]
+}
+
+Table Pedido {
+  id            int        [pk, increment]
+  numeroOrden   varchar(16) [not null, unique] // ej. BP-XXXXXXXX
+  clienteId     int        [ref: > Cliente.id, not null]
+  fecha         datetime   [not null]
+  total         int        [not null] // centavos de USD
+  correoEnviado boolean    [not null, default: false]
+}
+
+Table DetallePedido {
+  pedidoId   int [ref: > Pedido.id, not null]
+  productoId int [ref: > Producto.id, not null]
+  cantidad   int [not null]
+  importe    int [not null] // subtotal de la línea, en centavos
+  indexes {
+    (pedidoId, productoId) [pk] // PK compuesta
+  }
+}
