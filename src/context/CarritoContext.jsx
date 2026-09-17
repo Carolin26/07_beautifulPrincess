@@ -40,8 +40,7 @@ function CarritoProvider({ children }) {
   useEffect(() => {
     try {
       localStorage.setItem(CLAVE_CARRITO, JSON.stringify(lineas))
-    } catch {
-    }
+    } catch {}
   }, [lineas])
 
   const valor = useMemo(() => {
