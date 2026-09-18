@@ -6,9 +6,9 @@ Modelo de datos de **Beautiful Princess**, utilizado para representar la informa
 
 ## Archivos incluidos
 
-* [`modelo-entidad-relacion.png`](modelo-entidad-relacion.png) — diagrama del modelo.
-* [`modelo-entidad-relacion.svg`](modelo-entidad-relacion.svg) — versión vectorial editable del diagrama.
-* [`er.dbml`](er.dbml) — archivo fuente del modelo.
+- [`modelo-entidad-relacion.png`](modelo-entidad-relacion.png) — diagrama del modelo.
+- [`modelo-entidad-relacion.svg`](modelo-entidad-relacion.svg) — versión vectorial editable del diagrama.
+- [`er.dbml`](er.dbml) — archivo fuente del modelo.
 
 ## Entidades
 
@@ -80,10 +80,10 @@ La clave primaria de `DetallePedido` está formada por la combinación de `pedid
 
 Las entidades se relacionan de la siguiente manera:
 
-* Una **Colección** puede tener varios **Productos**, mientras que cada producto pertenece a una colección.
-* Un **Cliente** puede realizar varios **Pedidos**, mientras que cada pedido corresponde a un cliente.
-* Un **Pedido** puede contener varios registros de **DetallePedido**.
-* Un **Producto** puede aparecer en diferentes detalles de pedido.
+- Una **Colección** puede tener varios **Productos**, mientras que cada producto pertenece a una colección.
+- Un **Cliente** puede realizar varios **Pedidos**, mientras que cada pedido corresponde a un cliente.
+- Un **Pedido** puede contener varios registros de **DetallePedido**.
+- Un **Producto** puede aparecer en diferentes detalles de pedido.
 
 Estas relaciones permiten representar el recorrido de una compra desde los productos del catálogo hasta el pedido realizado por el cliente.
 
@@ -98,7 +98,6 @@ Los campos del modelo mantienen correspondencia con las estructuras de datos uti
 | Cliente       | `nombre`, `correo`                                                           | Formulario de Checkout             |
 | Pedido        | `numeroOrden`, `clienteId`, `fecha`, `total`                                 | Proceso de confirmación del pedido |
 | DetallePedido | `productoId`, `cantidad`, `importe`                                          | Detalle de la compra               |
-
 
 ## Estrategia de persistencia
 
