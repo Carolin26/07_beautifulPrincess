@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" font-family="Jost, system-ui, sans-serif">
+  <rect x="0" y="0" width="900" height="560" fill="#faf7f2"/>
+
+  <!-- Título -->
+  <text x="450" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1c1a16">
+    Modelo Entidad-Relación — Beautiful Princess
+  </text>
+
+  <!-- Entidad: Colección -->
+  <g>
+    <rect x="40" y="46" width="220" height="166" rx="4" fill="#ffffff" stroke="#b8976a" stroke-width="1.5"/>
+    <rect x="40" y="46" width="220" height="34" rx="4" fill="#1c1a16"/>
+    <text x="150" y="68" text-anchor="middle" font-size="15" font-weight="600" fill="#faf7f2">Colección</text>
+
+    <rect x="50" y="84" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="61" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <text x="82" y="95" font-size="13" font-weight="600" fill="#1c1a16">id</text>
+    <text x="250" y="95" text-anchor="end" font-size="11" fill="#7a6e5f">int · auto</text>
+
+    <text x="82" y="117" font-size="13" fill="#1c1a16">slug</text>
+    <text x="250" y="117" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(50) · uq</text>
+
+    <text x="82" y="139" font-size="13" fill="#1c1a16">titulo</text>
+    <text x="250" y="139" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(100)</text>
+
+    <text x="82" y="161" font-size="13" fill="#1c1a16">descripcion</text>
+    <text x="250" y="161" text-anchor="end" font-size="11" fill="#7a6e5f">text</text>
+
+    <text x="82" y="183" font-size="13" fill="#1c1a16">etiqueta</text>
+    <text x="250" y="183" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(60)</text>
+
+    <text x="82" y="205" font-size="13" fill="#1c1a16">imagen</text>
+    <text x="250" y="205" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(255)</text>
+  </g>
+
+  <!-- Entidad: Producto -->
+  <g>
+    <rect x="40" y="286" width="220" height="188" rx="4" fill="#ffffff" stroke="#b8976a" stroke-width="1.5"/>
+    <rect x="40" y="286" width="220" height="34" rx="4" fill="#1c1a16"/>
+    <text x="150" y="308" text-anchor="middle" font-size="15" font-weight="600" fill="#faf7f2">Producto</text>
+
+    <rect x="50" y="324" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="61" y="334" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <text x="82" y="335" font-size="13" font-weight="600" fill="#1c1a16">id</text>
+    <text x="250" y="335" text-anchor="end" font-size="11" fill="#7a6e5f">int · auto</text>
+
+    <text x="82" y="357" font-size="13" fill="#1c1a16">nombre</text>
+    <text x="250" y="357" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(120)</text>
+
+    <text x="82" y="379" font-size="13" fill="#1c1a16">precio</text>
+    <text x="250" y="379" text-anchor="end" font-size="11" fill="#7a6e5f">int · centavos</text>
+
+    <text x="82" y="401" font-size="13" fill="#1c1a16">descripcion</text>
+    <text x="250" y="401" text-anchor="end" font-size="11" fill="#7a6e5f">text</text>
+
+    <text x="82" y="423" font-size="13" fill="#1c1a16">material</text>
+    <text x="250" y="423" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(100)</text>
+
+    <rect x="50" y="434" width="22" height="14" rx="3" fill="none" stroke="#b8976a" stroke-width="1.5"/>
+    <text x="61" y="444" text-anchor="middle" font-size="9" font-weight="700" fill="#b8976a">FK</text>
+    <text x="82" y="445" font-size="13" fill="#1c1a16">coleccionId</text>
+    <text x="250" y="445" text-anchor="end" font-size="11" fill="#7a6e5f">int → Colección</text>
+
+    <text x="82" y="467" font-size="13" fill="#1c1a16">imagen</text>
+    <text x="250" y="467" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(255)</text>
+  </g>
+
+  <!-- Entidad: Cliente -->
+  <g>
+    <rect x="620" y="46" width="220" height="100" rx="4" fill="#ffffff" stroke="#b8976a" stroke-width="1.5"/>
+    <rect x="620" y="46" width="220" height="34" rx="4" fill="#1c1a16"/>
+    <text x="730" y="68" text-anchor="middle" font-size="15" font-weight="600" fill="#faf7f2">Cliente</text>
+
+    <rect x="630" y="84" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="641" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <text x="662" y="95" font-size="13" font-weight="600" fill="#1c1a16">id</text>
+    <text x="830" y="95" text-anchor="end" font-size="11" fill="#7a6e5f">int · auto</text>
+
+    <text x="662" y="117" font-size="13" fill="#1c1a16">nombre</text>
+    <text x="830" y="117" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(120)</text>
+
+    <text x="662" y="139" font-size="13" fill="#1c1a16">correo</text>
+    <text x="830" y="139" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(160) · uq</text>
+  </g>
+
+  <!-- Entidad: Pedido -->
+  <g>
+    <rect x="620" y="226" width="220" height="166" rx="4" fill="#ffffff" stroke="#b8976a" stroke-width="1.5"/>
+    <rect x="620" y="226" width="220" height="34" rx="4" fill="#1c1a16"/>
+    <text x="730" y="248" text-anchor="middle" font-size="15" font-weight="600" fill="#faf7f2">Pedido</text>
+
+    <rect x="630" y="264" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="641" y="274" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <text x="662" y="275" font-size="13" font-weight="600" fill="#1c1a16">id</text>
+    <text x="830" y="275" text-anchor="end" font-size="11" fill="#7a6e5f">int · auto</text>
+
+    <text x="662" y="297" font-size="13" fill="#1c1a16">numeroOrden</text>
+    <text x="830" y="297" text-anchor="end" font-size="11" fill="#7a6e5f">varchar(16) · uq</text>
+
+    <rect x="630" y="308" width="22" height="14" rx="3" fill="none" stroke="#b8976a" stroke-width="1.5"/>
+    <text x="641" y="318" text-anchor="middle" font-size="9" font-weight="700" fill="#b8976a">FK</text>
+    <text x="662" y="319" font-size="13" fill="#1c1a16">clienteId</text>
+    <text x="830" y="319" text-anchor="end" font-size="11" fill="#7a6e5f">int → Cliente</text>
+
+    <text x="662" y="341" font-size="13" fill="#1c1a16">fecha</text>
+    <text x="830" y="341" text-anchor="end" font-size="11" fill="#7a6e5f">datetime</text>
+
+    <text x="662" y="363" font-size="13" fill="#1c1a16">total</text>
+    <text x="830" y="363" text-anchor="end" font-size="11" fill="#7a6e5f">int · centavos</text>
+
+    <text x="662" y="385" font-size="13" fill="#1c1a16">correoEnviado</text>
+    <text x="830" y="385" text-anchor="end" font-size="11" fill="#7a6e5f">boolean</text>
+  </g>
+
+  <!-- Entidad: DetallePedido -->
+  <g>
+    <rect x="320" y="344" width="220" height="156" rx="4" fill="#ffffff" stroke="#b8976a" stroke-width="1.5"/>
+    <rect x="320" y="344" width="220" height="34" rx="4" fill="#1c1a16"/>
+    <text x="430" y="366" text-anchor="middle" font-size="15" font-weight="600" fill="#faf7f2">DetallePedido</text>
+
+    <rect x="330" y="382" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="341" y="392" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <rect x="358" y="382" width="22" height="14" rx="3" fill="none" stroke="#b8976a" stroke-width="1.5"/>
+    <text x="369" y="392" text-anchor="middle" font-size="9" font-weight="700" fill="#b8976a">FK</text>
+    <text x="390" y="393" font-size="13" font-weight="600" fill="#1c1a16">pedidoId</text>
+    <text x="530" y="393" text-anchor="end" font-size="11" fill="#7a6e5f">int → Pedido</text>
+
+    <rect x="330" y="404" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="341" y="414" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <rect x="358" y="404" width="22" height="14" rx="3" fill="none" stroke="#b8976a" stroke-width="1.5"/>
+    <text x="369" y="414" text-anchor="middle" font-size="9" font-weight="700" fill="#b8976a">FK</text>
+    <text x="390" y="415" font-size="13" font-weight="600" fill="#1c1a16">productoId</text>
+    <text x="530" y="415" text-anchor="end" font-size="11" fill="#7a6e5f">int → Producto</text>
+
+    <text x="390" y="437" font-size="13" fill="#1c1a16">cantidad</text>
+    <text x="530" y="437" text-anchor="end" font-size="11" fill="#7a6e5f">int</text>
+
+    <text x="390" y="459" font-size="13" fill="#1c1a16">importe</text>
+    <text x="530" y="459" text-anchor="end" font-size="11" fill="#7a6e5f">int · centavos</text>
+
+    <!-- PK compuesta -->
+    <text x="430" y="487" text-anchor="middle" font-size="10.5" fill="#7a6e5f">PK compuesta (pedidoId, productoId)</text>
+  </g>
+
+  <!-- Relaciones -->
+  <!-- Colección 1...N Producto -->
+  <line x1="150" y1="214" x2="150" y2="284" stroke="#b8976a" stroke-width="1.75"/>
+  <circle cx="150" cy="214" r="3" fill="#b8976a"/>
+  <circle cx="150" cy="284" r="3" fill="#b8976a"/>
+  <text x="150" y="226" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">1</text>
+  <text x="150" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">N</text>
+
+  <!-- Cliente 1...N Pedido -->
+  <line x1="730" y1="148" x2="730" y2="224" stroke="#b8976a" stroke-width="1.75"/>
+  <circle cx="730" cy="148" r="3" fill="#b8976a"/>
+  <circle cx="730" cy="224" r="3" fill="#b8976a"/>
+  <text x="730" y="160" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">1</text>
+  <text x="730" y="216" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">N</text>
+
+  <!-- Pedido 1...N DetallePedido -->
+  <line x1="620" y1="271" x2="540" y2="389" stroke="#b8976a" stroke-width="1.75"/>
+  <circle cx="620" cy="271" r="3" fill="#b8976a"/>
+  <circle cx="540" cy="389" r="3" fill="#b8976a"/>
+  <text x="604" y="280" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">1</text>
+  <text x="552" y="382" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">N</text>
+
+  <!-- Producto 1...N DetallePedido -->
+  <line x1="260" y1="331" x2="320" y2="411" stroke="#b8976a" stroke-width="1.75"/>
+  <circle cx="260" cy="331" r="3" fill="#b8976a"/>
+  <circle cx="320" cy="411" r="3" fill="#b8976a"/>
+  <text x="272" y="340" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">1</text>
+  <text x="312" y="404" text-anchor="middle" font-size="12" font-weight="600" fill="#7a6e5f">N</text>
+
+  <!-- Leyenda -->
+  <g>
+    <rect x="330" y="524" width="22" height="14" rx="3" fill="#b8976a"/>
+    <text x="341" y="534" text-anchor="middle" font-size="9" font-weight="700" fill="#1c1a16">PK</text>
+    <text x="358" y="535" font-size="12" fill="#1c1a16">Clave primaria</text>
+
+    <rect x="466" y="524" width="22" height="14" rx="3" fill="none" stroke="#b8976a" stroke-width="1.5"/>
+    <text x="477" y="534" text-anchor="middle" font-size="9" font-weight="700" fill="#b8976a">FK</text>
+    <text x="494" y="535" font-size="12" fill="#1c1a16">Clave foránea</text>
+  </g>
+</svg>
