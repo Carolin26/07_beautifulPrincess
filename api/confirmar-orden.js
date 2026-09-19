@@ -1,7 +1,13 @@
 import Stripe from "stripe"
 import nodemailer from "nodemailer"
+import { join } from "path"
+import { leerJSON, escribirJSON, agregarRegistro } from "./lib/datosPlanos.js"
+import { catalogo } from "../shared/catalogo.js"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+
+const RUTA_CLIENTES = join(process.cwd(), "data", "clientes.json")
+const RUTA_PEDIDOS = join(process.cwd(), "data", "pedidos.json")
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -25,9 +31,58 @@ const escapar = (valor) =>
 const esCorreo = (v) =>
   typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 
-function numeroDeOrden(sessionId) {
+export function numeroDeOrden(sessionId) {
   const limpio = sessionId.replace(/[^a-zA-Z0-9]/g, "")
   return `BP-${limpio.slice(-8).toUpperCase()}`
+}
+
+export function buscarOCrearCliente(rutaClientes, correo, nombre) {
+  const clientes = leerJSON(rutaClientes)
+  const existente = clientes.find((c) => c.correo === correo)
+  if (existente) return existente.id
+
+  const id = clientes.reduce((max, c) => Math.max(max, c.id), 0) + 1
+  agregarRegistro(rutaClientes, { id, nombre, correo })
+  return id
+}
+
+// Guarda el pedido en pedidos.json, o actualiza correoEnviado si ya
+// existía. Idempotente por numeroOrden: la página de confirmación puede
+// llamar a este endpoint más de una vez para la misma sesión sin duplicar
+// el pedido. rutaClientes/rutaPedidos son inyectables para poder probar
+// esto sin tocar los archivos reales del proyecto.
+export function guardarPedido(
+  { correo, nombre, numeroOrden, lineas, total, correoEnviado },
+  { rutaClientes = RUTA_CLIENTES, rutaPedidos = RUTA_PEDIDOS } = {},
+) {
+  const pedidos = leerJSON(rutaPedidos)
+  const existente = pedidos.find((p) => p.numeroOrden === numeroOrden)
+
+  if (existente) {
+    if (correoEnviado && !existente.correoEnviado) {
+      existente.correoEnviado = true
+      escribirJSON(rutaPedidos, pedidos)
+    }
+    return
+  }
+
+  const clienteId = buscarOCrearCliente(rutaClientes, correo, nombre)
+  const items = lineas.map((linea) => ({
+    productoId: catalogo.find((p) => p.nombre === linea.nombre)?.id ?? null,
+    cantidad: linea.cantidad,
+    importe: linea.importe,
+  }))
+  const id = pedidos.reduce((max, p) => Math.max(max, p.id), 0) + 1
+
+  agregarRegistro(rutaPedidos, {
+    id,
+    numeroOrden,
+    clienteId,
+    fecha: new Date().toISOString(),
+    items,
+    total,
+    correoEnviado,
+  })
 }
 
 const plantilla = ({ nombre, numeroOrden, lineas, total }) => `
@@ -86,7 +141,25 @@ export default async function handler(req, res) {
 
   const resumen = { numeroOrden, correo, lineas, total }
 
+  // El pedido se guarda por separado del correo: que falle la escritura del
+  // archivo no debe impedir que el correo salga (y viceversa).
+  const guardar = (correoEnviado) => {
+    try {
+      guardarPedido({
+        correo,
+        nombre,
+        numeroOrden,
+        lineas,
+        total,
+        correoEnviado,
+      })
+    } catch (error) {
+      console.error("No se pudo guardar el pedido:", error.message)
+    }
+  }
+
   if (sesion.metadata?.correoEnviado === "1") {
+    guardar(true)
     return res.status(200).json({ ...resumen, correoEnviado: true })
   }
 
@@ -103,6 +176,7 @@ export default async function handler(req, res) {
     })
   } catch (error) {
     console.error("Fallo el envio:", error.message)
+    guardar(false)
     return res.status(200).json({ ...resumen, correoEnviado: false })
   }
 
@@ -114,5 +188,6 @@ export default async function handler(req, res) {
     console.error("No se pudo marcar la sesion:", error.message)
   }
 
+  guardar(true)
   return res.status(200).json({ ...resumen, correoEnviado: true })
 }
