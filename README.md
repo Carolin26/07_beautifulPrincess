@@ -179,6 +179,13 @@ src/
   styles/               reset.css, variables.css, global.css
 ```
 
+## Modelo de datos
+
+El modelo entidad-relación (Colección, Producto, Cliente, Pedido, DetallePedido)
+con sus claves primarias y foráneas, la justificación de usar JSON en vez de un
+motor SQL, y la correspondencia con los datos reales del proyecto están
+documentados en [`docs/modelo-datos/README.md`](docs/modelo-datos/README.md).
+
 ## Sistema de diseño
 
 Todos los estilos usan variables CSS definidas en `src/styles/variables.css`.
