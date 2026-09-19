@@ -16,10 +16,13 @@ pedidos de la tienda en línea de joyería.
 
 ## Entidades
 
-Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
-**DetallePedido**.
+El modelo está compuesto por cinco entidades: **Colección, Producto, Cliente,
+Pedido y DetallePedido**.
 
 ### Colección
+
+Representa las colecciones en las que se organizan los productos del
+catálogo: nombre, descripción, etiqueta e imagen.
 
 | Campo         | Tipo           | Restricción  | Descripción                       |
 | ------------- | -------------- | ------------ | --------------------------------- |
@@ -31,6 +34,9 @@ Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
 | `imagen`      | `varchar(255)` | `NOT NULL`   | Ruta o URL de la imagen           |
 
 ### Producto
+
+Representa cada pieza disponible en el catálogo. Se relaciona con una
+colección y contiene nombre, precio, descripción, material e imagen.
 
 | Campo         | Tipo           | Restricción  | Descripción                              |
 | ------------- | -------------- | ------------ | ---------------------------------------- |
@@ -44,6 +50,9 @@ Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
 
 ### Cliente
 
+Representa a la persona que realiza una compra: se registran sus datos
+básicos para asociarlos al pedido y permitir la comunicación relacionada.
+
 | Campo    | Tipo           | Restricción          | Descripción               |
 | -------- | -------------- | -------------------- | ------------------------- |
 | `id`     | `int`          | **PK**, auto         | Identificador del cliente |
@@ -51,6 +60,9 @@ Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
 | `correo` | `varchar(160)` | `NOT NULL`, `UNIQUE` | Correo del cliente        |
 
 ### Pedido
+
+Representa una orden de compra realizada por un cliente: identifica el
+pedido, lo relaciona con el cliente y registra fecha y total.
 
 | Campo           | Tipo          | Restricción                  | Descripción                           |
 | --------------- | ------------- | ---------------------------- | ------------------------------------- |
@@ -63,6 +75,9 @@ Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
 
 ### DetallePedido
 
+Representa cada producto incluido dentro de un pedido: qué producto se
+compró, la cantidad solicitada y el importe correspondiente.
+
 | Campo        | Tipo  | Restricción                 | Descripción                             |
 | ------------ | ----- | --------------------------- | --------------------------------------- |
 | `pedidoId`   | `int` | **PK** (compuesta) + **FK** | → `Pedido.id`                           |
@@ -72,7 +87,14 @@ Son 5: **Colección**, **Producto**, **Cliente**, **Pedido** y
 
 La clave primaria de `DetallePedido` es **compuesta**: `(pedidoId, productoId)`.
 
-## Integridad referencial
+## Relaciones entre las entidades
+
+- Una **Colección** puede tener varios **Productos**; cada producto
+  pertenece a una sola colección.
+- Un **Cliente** puede realizar varios **Pedidos**; cada pedido corresponde
+  a un solo cliente.
+- Un **Pedido** puede contener varias líneas de **DetallePedido**.
+- Un **Producto** puede aparecer en varias líneas de detalle de pedido.
 
 | Relación                                   | Tipo  | Descripción                                     |
 | ------------------------------------------ | ----- | ----------------------------------------------- |
@@ -96,3 +118,23 @@ datos del proyecto, para que los JSON del Hito 2 no tengan que inventar nada:
 
 Nota: los precios y totales se guardan en **centavos de USD** (`int`), tal como
 los maneja Stripe y `formatearPrecio` (`importe / 100`).
+
+## Estrategia de persistencia
+
+Para este proyecto se eligió utilizar archivos JSON estructurados ya que esta
+opción se adapta al alcance actual de la aplicación: los datos del catálogo
+son información que la aplicación necesita consultar y mostrar, como
+colecciones, productos, precios, imágenes y descripciones.
+
+El formato JSON permite organizar estos datos mediante objetos y arreglos,
+manteniendo una estructura clara que puede ser utilizada directamente por la
+aplicación. Además, facilita la edición y revisión de la información durante
+el desarrollo, sin requerir la configuración, conexión y administración de un
+motor de base de datos.
+
+Por otro lado, el modelo entidad-relación permite definir desde esta etapa
+las entidades, campos, claves y relaciones que tendría una futura base de
+datos. De esta manera, el uso de JSON no impide documentar la estructura de
+los datos ni establecer su organización. De acuerdo con el alcance del
+proyecto, el modelo puede quedar documentado sin que sea obligatorio realizar
+su migración a SQLite o a otro motor de base de datos.

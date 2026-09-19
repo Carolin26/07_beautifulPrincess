@@ -179,6 +179,21 @@ src/
   styles/               reset.css, variables.css, global.css
 ```
 
+## Modelado del proceso (BPMN)
+
+El flujo de compra (catálogo → carrito → checkout → pago → confirmación) está
+modelado con notación BPMN 2.0 en
+[`docs/bpmn/proceso-compra.png`](docs/bpmn/proceso-compra.png), con 3 carriles
+(Cliente, Sistema, Pasarela de pago) y la compuerta de decisión de pago
+aprobado/rechazado. Detalle en [`docs/bpmn/README.md`](docs/bpmn/README.md).
+
+## Modelo de datos
+
+El modelo entidad-relación (Colección, Producto, Cliente, Pedido, DetallePedido)
+con sus claves primarias y foráneas, la justificación de usar JSON en vez de un
+motor SQL, y la correspondencia con los datos reales del proyecto están
+documentados en [`docs/modelo-datos/README.md`](docs/modelo-datos/README.md).
+
 ## Sistema de diseño
 
 Todos los estilos usan variables CSS definidas en `src/styles/variables.css`.
