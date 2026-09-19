@@ -1,0 +1,82 @@
+.admin {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.admin__menu {
+  background: var(--color-bg-alt);
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-lg) var(--space-md);
+}
+
+.admin__marca {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: var(--space-lg);
+}
+
+.admin__menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.admin__enlace {
+  display: block;
+  padding: var(--space-sm) var(--space-xs);
+  border-left: 2px solid transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.admin__enlace:hover {
+  color: var(--color-text);
+}
+
+.admin__enlace--activo {
+  border-left-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.admin__contenido {
+  padding: var(--space-lg) var(--space-md);
+}
+
+.reporte__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 32px;
+}
+
+.reporte__texto {
+  margin-top: var(--space-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+@media (max-width: 767px) {
+  .admin {
+    grid-template-columns: 1fr;
+  }
+
+  .admin__menu {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .admin__marca {
+    margin-bottom: var(--space-sm);
+  }
+
+  .admin__menu nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
