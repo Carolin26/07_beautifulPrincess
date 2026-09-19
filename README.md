@@ -164,6 +164,15 @@ paga y cierra la pestaña antes de volver, el correo no sale. Para un proyecto d
 curso es aceptable; en producción se escucharía el evento
 `checkout.session.completed` de Stripe para enviarlo siempre.
 
+### Persistencia de pedidos (solo local)
+
+Cada pedido pagado se guarda en `data/pedidos.json` (y el cliente en
+`data/clientes.json`) desde `api/confirmar-orden.js`. Esto funciona de punta
+a punta corriendo `vercel dev` en local, pero en el despliegue de producción
+de Vercel el sistema de archivos es efímero entre invocaciones: la escritura
+no falla, pero tampoco persiste de una visita a otra. Para un proyecto de
+curso alcanza; en producción se usaría una base de datos real.
+
 ## Estructura
 
 ```
