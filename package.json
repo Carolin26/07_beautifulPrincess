@@ -10,7 +10,8 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed": "node scripts/seed.js"
   },
   "dependencies": {
     "nodemailer": "^9.0.5",
