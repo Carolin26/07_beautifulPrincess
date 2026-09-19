@@ -7,17 +7,17 @@ Proceso de negocio: **Compra en línea de joyería**.
 ## Archivos incluidos
 
 - [`proceso-compra.png`](proceso-compra.png) — diagrama exportado, listo para ver o imprimir.
-- [`proceso-compra.svg`](proceso-compra.svg) — versión editable (vectorial) del mismo diagrama.
+- [`proceso-compra.bpm`](proceso-compra.bpm) — archivo fuente editable en [Bizagi Modeler](https://www.bizagi.com/es/plataforma/modeler).
 
 ## Carriles
 
-- **Cliente**: navega el catálogo, agrega un producto al carrito, inicia el checkout.
-- **Sistema**: redirige a la pasarela de pago, evalúa el resultado del pago, guarda el pedido y envía el correo de confirmación (o muestra el error).
-- **Pasarela de pago**: procesa el pago (Stripe, modo prueba).
+- **Cliente**: accede a la aplicación, explora el catálogo, selecciona productos y los agrega al carrito, revisa su selección (con opción de editarla), ingresa sus datos y paga (o elige un método de pago alternativo si el primero es rechazado).
+- **Sistema**: registra el pedido una vez que el pago fue aprobado.
+- **Pasarela de pago**: procesa el pago y evalúa si fue aprobado.
+- **Servicio de correo**: envía el correo de confirmación al finalizar.
 
-## Compuerta de decisión
+## Compuertas de decisión
 
-Después de que la pasarela procesa el pago, el sistema evalúa **¿Pago aprobado?**:
-
-- **Sí** → se guarda el pedido y se envía el correo de confirmación → fin del proceso (confirmado).
-- **No** → se muestra el error de pago al cliente → fin del proceso (rechazado).
+- **¿Desea otro producto?**: si el cliente quiere seguir comprando, vuelve a explorar el catálogo antes de revisar su selección.
+- **¿Es conforme?**: si el cliente no está conforme con su selección, puede editarla antes de continuar.
+- **¿Pago aprobado?**: si el pago es rechazado, el cliente puede ingresar un método de pago alternativo y reintentar; si es aprobado, el sistema registra el pedido y el correo de confirmación cierra el proceso.
