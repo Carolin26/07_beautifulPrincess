@@ -1,0 +1,74 @@
+.ventas-periodo__filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.ventas-periodo__campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.ventas-periodo__etiqueta {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ventas-periodo__campo input {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+.ventas-periodo__campo input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.ventas-periodo__resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.ventas-periodo__dato {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+}
+
+.ventas-periodo__dato-titulo {
+  display: block;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ventas-periodo__dato-valor {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.ventas-periodo__vacio {
+  margin-top: var(--space-lg);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
