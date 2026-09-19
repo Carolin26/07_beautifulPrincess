@@ -183,9 +183,10 @@ src/
 
 El flujo de compra (catálogo → carrito → checkout → pago → confirmación) está
 modelado con notación BPMN 2.0 en
-[`docs/bpmn/proceso-compra.png`](docs/bpmn/proceso-compra.png), con 3 carriles
-(Cliente, Sistema, Pasarela de pago) y la compuerta de decisión de pago
-aprobado/rechazado. Detalle en [`docs/bpmn/README.md`](docs/bpmn/README.md).
+[`docs/bpmn/proceso-compra.png`](docs/bpmn/proceso-compra.png) (hecho en
+Bizagi Modeler), con 4 carriles (Cliente, Sistema, Pasarela de pago, Servicio
+de correo) y compuertas de decisión de pago aprobado/rechazado y conformidad
+del pedido. Detalle en [`docs/bpmn/README.md`](docs/bpmn/README.md).
 
 ## Modelo de datos
 
