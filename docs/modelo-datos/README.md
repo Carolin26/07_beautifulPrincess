@@ -1,108 +1,140 @@
 # Modelo Entidad-Relación
 
-Modelo de datos de **Beautiful Princess**, utilizado para representar la información principal del catálogo y del proceso de compra de la tienda en línea de joyería.
+Modelo de datos de **Beautiful Princess**: el catálogo, los clientes y los
+pedidos de la tienda en línea de joyería.
 
 ![Modelo Entidad-Relación](modelo-entidad-relacion.png)
 
 ## Archivos incluidos
 
-- [`modelo-entidad-relacion.png`](modelo-entidad-relacion.png) — diagrama del modelo.
-- [`modelo-entidad-relacion.svg`](modelo-entidad-relacion.svg) — versión vectorial editable del diagrama.
-- [`er.dbml`](er.dbml) — archivo fuente del modelo.
+- [`modelo-entidad-relacion.png`](modelo-entidad-relacion.png) — diagrama
+  exportado, listo para ver o imprimir.
+- [`modelo-entidad-relacion.svg`](modelo-entidad-relacion.svg) — versión
+  editable (vectorial) del mismo diagrama.
+- [`er.dbml`](er.dbml) — fuente editable para
+  [dbdiagram.io](https://dbdiagram.io) o [draw.io](https://draw.io).
 
 ## Entidades
 
-El modelo está compuesto por cinco entidades: **Colección, Producto, Cliente, Pedido y DetallePedido**.
+El modelo está compuesto por cinco entidades: **Colección, Producto, Cliente,
+Pedido y DetallePedido**.
 
 ### Colección
 
-Representa las colecciones en las que se organizan los productos del catálogo. Contiene la información necesaria para identificar y mostrar cada colección, como su nombre, descripción, etiqueta e imagen.
+Representa las colecciones en las que se organizan los productos del
+catálogo: nombre, descripción, etiqueta e imagen.
 
-| Campo         | Tipo           | Restricción | Descripción                       |
-| ------------- | -------------- | ----------- | --------------------------------- |
-| `id`          | `int`          | **PK**      | Identificador de la colección     |
-| `slug`        | `varchar(50)`  | `UNIQUE`    | Identificador utilizado en la URL |
-| `titulo`      | `varchar(100)` | `NOT NULL`  | Nombre de la colección            |
-| `descripcion` | `text`         |             | Descripción de la colección       |
-| `etiqueta`    | `varchar(60)`  |             | Etiqueta asociada a la colección  |
-| `imagen`      | `varchar(255)` | `NOT NULL`  | Ruta o URL de la imagen           |
+| Campo         | Tipo           | Restricción  | Descripción                       |
+| ------------- | -------------- | ------------ | --------------------------------- |
+| `id`          | `int`          | **PK**, auto | Identificador de la colección     |
+| `slug`        | `varchar(50)`  | `UNIQUE`     | Identificador de URL (`rings`)    |
+| `titulo`      | `varchar(100)` | `NOT NULL`   | Nombre visible (`Anillos`)        |
+| `descripcion` | `text`         |              | Texto descriptivo de la colección |
+| `etiqueta`    | `varchar(60)`  |              | Etiqueta (`Más vendido`, `Nuevo`) |
+| `imagen`      | `varchar(255)` | `NOT NULL`   | Ruta o URL de la imagen           |
 
 ### Producto
 
-Representa cada pieza disponible en el catálogo. Se relaciona con una colección y contiene información como nombre, precio, descripción, material e imagen.
+Representa cada pieza disponible en el catálogo. Se relaciona con una
+colección y contiene nombre, precio, descripción, material e imagen.
 
-| Campo         | Tipo           | Restricción | Descripción                 |
-| ------------- | -------------- | ----------- | --------------------------- |
-| `id`          | `int`          | **PK**      | Identificador del producto  |
-| `nombre`      | `varchar(120)` | `NOT NULL`  | Nombre del producto         |
-| `precio`      | `int`          | `NOT NULL`  | Precio del producto         |
-| `descripcion` | `text`         |             | Descripción del producto    |
-| `material`    | `varchar(100)` |             | Material del producto       |
-| `coleccionId` | `int`          | **FK**      | Referencia a `Coleccion.id` |
-| `imagen`      | `varchar(255)` | `NOT NULL`  | Ruta o URL de la imagen     |
+| Campo         | Tipo           | Restricción  | Descripción                              |
+| ------------- | -------------- | ------------ | ---------------------------------------- |
+| `id`          | `int`          | **PK**, auto | Identificador del producto               |
+| `nombre`      | `varchar(120)` | `NOT NULL`   | Nombre comercial (`Pomona Ring`)         |
+| `precio`      | `int`          | `NOT NULL`   | Precio en **centavos de USD** (`240000`) |
+| `descripcion` | `text`         |              | Texto descriptivo del producto           |
+| `material`    | `varchar(100)` |              | Material (`Oro 18k, rubí`)               |
+| `coleccionId` | `int`          | **FK**       | → `Coleccion.id`                         |
+| `imagen`      | `varchar(255)` | `NOT NULL`   | Ruta o URL de la imagen                  |
 
 ### Cliente
 
-Representa a la persona que realiza una compra. Se registran sus datos básicos para asociarlos al pedido y permitir la comunicación relacionada con la compra.
+Representa a la persona que realiza una compra: se registran sus datos
+básicos para asociarlos al pedido y permitir la comunicación relacionada.
 
-| Campo    | Tipo           | Restricción | Descripción                    |
-| -------- | -------------- | ----------- | ------------------------------ |
-| `id`     | `int`          | **PK**      | Identificador del cliente      |
-| `nombre` | `varchar(120)` | `NOT NULL`  | Nombre del cliente             |
-| `correo` | `varchar(160)` | `NOT NULL`  | Correo electrónico del cliente |
+| Campo    | Tipo           | Restricción          | Descripción               |
+| -------- | -------------- | -------------------- | ------------------------- |
+| `id`     | `int`          | **PK**, auto         | Identificador del cliente |
+| `nombre` | `varchar(120)` | `NOT NULL`           | Nombre del cliente        |
+| `correo` | `varchar(160)` | `NOT NULL`, `UNIQUE` | Correo del cliente        |
 
 ### Pedido
 
-Representa una orden de compra realizada por un cliente. Permite identificar el pedido, relacionarlo con el cliente y registrar información como la fecha y el total de la compra.
+Representa una orden de compra realizada por un cliente: identifica el
+pedido, lo relaciona con el cliente y registra fecha y total.
 
-| Campo         | Tipo          | Restricción          | Descripción               |
-| ------------- | ------------- | -------------------- | ------------------------- |
-| `id`          | `int`         | **PK**               | Identificador del pedido  |
-| `numeroOrden` | `varchar(16)` | `NOT NULL`, `UNIQUE` | Número de orden           |
-| `clienteId`   | `int`         | **FK**               | Referencia a `Cliente.id` |
-| `fecha`       | `datetime`    | `NOT NULL`           | Fecha y hora del pedido   |
-| `total`       | `int`         | `NOT NULL`           | Total del pedido          |
+| Campo           | Tipo          | Restricción                  | Descripción                           |
+| --------------- | ------------- | ---------------------------- | ------------------------------------- |
+| `id`            | `int`         | **PK**, auto                 | Identificador del pedido              |
+| `numeroOrden`   | `varchar(16)` | `NOT NULL`, `UNIQUE`         | Número legible (`BP-XXXXXXXX`)        |
+| `clienteId`     | `int`         | **FK**                       | → `Cliente.id`                        |
+| `fecha`         | `datetime`    | `NOT NULL`                   | Fecha y hora del pedido               |
+| `total`         | `int`         | `NOT NULL`                   | Total del pedido en centavos de USD   |
+| `correoEnviado` | `boolean`     | `NOT NULL`, `default: false` | Si se envió el correo de confirmación |
 
 ### DetallePedido
 
-Representa cada producto incluido dentro de un pedido. Permite registrar qué producto se compró, la cantidad solicitada y el importe correspondiente.
+Representa cada producto incluido dentro de un pedido: qué producto se
+compró, la cantidad solicitada y el importe correspondiente.
 
-| Campo        | Tipo  | Restricción | Descripción                |
-| ------------ | ----- | ----------- | -------------------------- |
-| `pedidoId`   | `int` | **PK, FK**  | Referencia a `Pedido.id`   |
-| `productoId` | `int` | **PK, FK**  | Referencia a `Producto.id` |
-| `cantidad`   | `int` | `NOT NULL`  | Cantidad de unidades       |
-| `importe`    | `int` | `NOT NULL`  | Importe de la línea        |
+| Campo        | Tipo  | Restricción                 | Descripción                             |
+| ------------ | ----- | --------------------------- | --------------------------------------- |
+| `pedidoId`   | `int` | **PK** (compuesta) + **FK** | → `Pedido.id`                           |
+| `productoId` | `int` | **PK** (compuesta) + **FK** | → `Producto.id`                         |
+| `cantidad`   | `int` | `NOT NULL`                  | Cantidad de unidades de esa línea       |
+| `importe`    | `int` | `NOT NULL`                  | Subtotal de la línea en centavos de USD |
 
-La clave primaria de `DetallePedido` está formada por la combinación de `pedidoId` y `productoId`.
+La clave primaria de `DetallePedido` es **compuesta**: `(pedidoId, productoId)`.
 
 ## Relaciones entre las entidades
 
-Las entidades se relacionan de la siguiente manera:
+- Una **Colección** puede tener varios **Productos**; cada producto
+  pertenece a una sola colección.
+- Un **Cliente** puede realizar varios **Pedidos**; cada pedido corresponde
+  a un solo cliente.
+- Un **Pedido** puede contener varias líneas de **DetallePedido**.
+- Un **Producto** puede aparecer en varias líneas de detalle de pedido.
 
-- Una **Colección** puede tener varios **Productos**, mientras que cada producto pertenece a una colección.
-- Un **Cliente** puede realizar varios **Pedidos**, mientras que cada pedido corresponde a un cliente.
-- Un **Pedido** puede contener varios registros de **DetallePedido**.
-- Un **Producto** puede aparecer en diferentes detalles de pedido.
+| Relación                                   | Tipo  | Descripción                                     |
+| ------------------------------------------ | ----- | ----------------------------------------------- |
+| `Coleccion.id` → `Producto.coleccionId`    | 1 a N | Una colección contiene muchos productos         |
+| `Cliente.id` → `Pedido.clienteId`          | 1 a N | Un cliente genera muchos pedidos                |
+| `Pedido.id` → `DetallePedido.pedidoId`     | 1 a N | Un pedido tiene muchas líneas de detalle        |
+| `Producto.id` → `DetallePedido.productoId` | 1 a N | Un producto aparece en muchas líneas de detalle |
 
-Estas relaciones permiten representar el recorrido de una compra desde los productos del catálogo hasta el pedido realizado por el cliente.
+## Correlación con los JSON del Hito 2
 
-## Correspondencia con los datos del proyecto
+Los nombres de campo del modelo son exactamente las claves que ya usan los
+datos del proyecto, para que los JSON del Hito 2 no tengan que inventar nada:
 
-Los campos del modelo mantienen correspondencia con las estructuras de datos utilizadas en el proyecto. De esta manera, el modelo representa la información que utiliza actualmente la aplicación.
+| Entidad       | Campos                                                                       | Origen en el código                                                |
+| ------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Colección     | `id`, `slug`, `titulo`, `descripcion`, `etiqueta`, `imagen`                  | `src/data/colecciones.js`                                          |
+| Producto      | `id`, `nombre`, `precio`, `descripcion`, `material`, `coleccionId`, `imagen` | `shared/catalogo.js`                                               |
+| Cliente       | `nombre`, `correo`                                                           | Checkout: `Checkout.jsx`, `crear-sesion-pago.js`                   |
+| Pedido        | `numeroOrden`, `clienteId`, `total`, `correoEnviado`                         | `api/confirmar-orden.js` (`numeroOrden`, `total`, `correoEnviado`) |
+| DetallePedido | `productoId`, `cantidad`, `importe`                                          | Confirmación de orden (`lineas`: `cantidad`, `importe`)            |
 
-| Entidad       | Campos principales                                                           | Ubicación                          |
-| ------------- | ---------------------------------------------------------------------------- | ---------------------------------- |
-| Colección     | `id`, `slug`, `titulo`, `descripcion`, `etiqueta`, `imagen`                  | `src/data/colecciones.js`          |
-| Producto      | `id`, `nombre`, `precio`, `descripcion`, `material`, `coleccionId`, `imagen` | `shared/catalogo.js`               |
-| Cliente       | `nombre`, `correo`                                                           | Formulario de Checkout             |
-| Pedido        | `numeroOrden`, `clienteId`, `fecha`, `total`                                 | Proceso de confirmación del pedido |
-| DetallePedido | `productoId`, `cantidad`, `importe`                                          | Detalle de la compra               |
+Nota: los precios y totales se guardan en **centavos de USD** (`int`), tal como
+los maneja Stripe y `formatearPrecio` (`importe / 100`).
 
 ## Estrategia de persistencia
 
-Para este proyecto se eligió utilizar archivos JSON estructurados ya que esta opción se adapta al alcance actual de la aplicación, puesto que los datos del catálogo son información que la aplicación necesita consultar y mostrar, como las colecciones, productos, precios, imágenes y descripciones.
+Para este proyecto se eligió utilizar archivos JSON estructurados ya que esta
+opción se adapta al alcance actual de la aplicación: los datos del catálogo
+son información que la aplicación necesita consultar y mostrar, como
+colecciones, productos, precios, imágenes y descripciones.
 
-El formato JSON permite organizar estos datos mediante objetos y arreglos, manteniendo una estructura clara que puede ser utilizada directamente por la aplicación. Además, facilita la edición y revisión de la información durante el desarrollo, sin requerir la configuración, conexión y administración de un motor de base de datos.
+El formato JSON permite organizar estos datos mediante objetos y arreglos,
+manteniendo una estructura clara que puede ser utilizada directamente por la
+aplicación. Además, facilita la edición y revisión de la información durante
+el desarrollo, sin requerir la configuración, conexión y administración de un
+motor de base de datos.
 
-Por otro lado, el modelo entidad-relación permite definir desde esta etapa las entidades, campos, claves y relaciones que tendría una futura base de datos. De esta manera, el uso de JSON no impide documentar la estructura de los datos ni establecer su organización. De acuerdo con el alcance del proyecto, el modelo puede quedar documentado sin que sea obligatorio realizar su migración a SQLite o a otro motor de base de datos.
+Por otro lado, el modelo entidad-relación permite definir desde esta etapa
+las entidades, campos, claves y relaciones que tendría una futura base de
+datos. De esta manera, el uso de JSON no impide documentar la estructura de
+los datos ni establecer su organización. De acuerdo con el alcance del
+proyecto, el modelo puede quedar documentado sin que sea obligatorio realizar
+su migración a SQLite o a otro motor de base de datos.
