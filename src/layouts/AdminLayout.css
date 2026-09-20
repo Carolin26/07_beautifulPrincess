@@ -51,3 +51,28 @@
   background: var(--color-bg-alt);
   font-weight: 600;
 }
+
+.admin__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+.admin__tabla th,
+.admin__tabla td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin__tabla th {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin__tabla td {
+  color: var(--color-text);
+}
