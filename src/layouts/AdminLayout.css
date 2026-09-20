@@ -1,0 +1,53 @@
+.admin {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: var(--space-lg) var(--container-pad);
+}
+
+.admin__encabezado {
+  margin-bottom: var(--space-lg);
+}
+
+.admin__sobretitulo {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.admin__titulo {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 32px;
+}
+
+.admin__menu {
+  display: flex;
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+}
+
+.admin__enlace {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.admin__enlace:hover {
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+}
+
+.admin__enlace--activo {
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  font-weight: 600;
+}
