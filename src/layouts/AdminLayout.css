@@ -76,3 +76,50 @@
 .admin__tabla td {
   color: var(--color-text);
 }
+
+.admin__filtros {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.admin__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin__campo input {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+.admin__resumen {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.admin__resumen dt {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.admin__resumen dd {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 28px;
+}
