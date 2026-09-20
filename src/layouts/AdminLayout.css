@@ -77,6 +77,19 @@
   color: var(--color-text);
 }
 
+.admin__orden-columna {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin__orden-columna:hover {
+  color: var(--color-text);
+}
+
 .admin__filtros {
   display: flex;
   gap: var(--space-md);
