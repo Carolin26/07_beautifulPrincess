@@ -204,6 +204,12 @@ con sus claves primarias y foráneas, la justificación de usar JSON en vez de u
 motor SQL, y la correspondencia con los datos reales del proyecto están
 documentados en [`docs/modelo-datos/README.md`](docs/modelo-datos/README.md).
 
+## Manual de usuario
+
+El flujo de compra explicado para el cliente final (sin conocimientos
+técnicos), con capturas de pantalla de cada paso, está en
+[`docs/manual-usuario.md`](docs/manual-usuario.md).
+
 ## Sistema de diseño
 
 Todos los estilos usan variables CSS definidas en `src/styles/variables.css`.
