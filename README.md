@@ -210,6 +210,13 @@ El flujo de compra explicado para el cliente final (sin conocimientos
 técnicos), con capturas de pantalla de cada paso, está en
 [`docs/manual-usuario.md`](docs/manual-usuario.md).
 
+## Informe de Proyecto
+
+El informe del proyecto siguiendo la estructura del Anexo 4 (Plan de Proyecto
+Productivo EFSRT), con el diagnóstico, objetivos, alcance, cronograma,
+productos y entregables del proyecto, está en
+[`docs/informe-proyecto.md`](docs/informe-proyecto.md).
+
 ## Sistema de diseño
 
 Todos los estilos usan variables CSS definidas en `src/styles/variables.css`.
