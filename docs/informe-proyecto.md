@@ -10,17 +10,17 @@
 | --------------------- | --------------------------------------------------------- |
 | Nombre del proyecto   | Beautiful Princess — Tienda en línea de joyería artesanal |
 | Nombre del curso      | Desarrollo de Entornos Web (EFSRT)                        |
-| Docente-monitor       | (completar)                                               |
+| Docente-monitor       | Napoleón Stein Cerna Rosas                                |
 | Ciclo y semestre      | 2026                                                      |
-| Coordinador del grupo | (completar)                                               |
-| Integrantes del grupo | (completar) — ver tabla siguiente                         |
+| Coordinador del grupo | Jerson Marcial Vilca Puma                                 |
+| Integrantes del grupo | Grupo número 1 — ver tabla siguiente                      |
 
-| N°  | Nombres y apellidos | Código | Rol en el equipo |
-| --- | ------------------- | ------ | ---------------- |
-| 1   | (completar)         |        | Coordinador      |
-| 2   | (completar)         |        |                  |
-| 3   | (completar)         |        |                  |
-| 4   | (completar)         |        |                  |
+| N°  | Nombres y apellidos          | Código | Rol en el equipo |
+| --- | ---------------------------- | ------ | ---------------- |
+| 1   | Jerson Marcial Vilca Puma    |        | Coordinador      |
+| 2   | Leslie Denisse Arias Alcalá  |        |                  |
+| 3   | Ylan Cleiver Cardozo Gonzales|        |                  |
+| 4   | Joy Carolin Narro Garcia     |        |                  |
 
 ## Introducción
 
