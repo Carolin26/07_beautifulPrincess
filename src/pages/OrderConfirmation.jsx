@@ -18,6 +18,24 @@ const OrderConfirmation = () => {
     if (!sessionId) {
       return
     }
+    if (sessionId.startsWith("demo-")) {
+      // Orden simulada guardada por el checkout cuando no hay backend.
+      try {
+        const guardada = sessionStorage.getItem(`demo-orden:${sessionId}`)
+        if (!guardada) {
+          throw new Error("demo order missing")
+        }
+        setOrden(JSON.parse(guardada))
+        setEstado("ok")
+        if (!yaVaciado.current) {
+          yaVaciado.current = true
+          vaciar()
+        }
+      } catch {
+        setEstado("error")
+      }
+      return
+    }
     let activo = true
     async function verificar() {
       try {

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./Checkout.css"
 import Container from "../components/Container/Container"
 import Button from "../components/Button/Button"
@@ -9,6 +10,7 @@ const CORREO_VALIDO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const Checkout = () => {
   const { lineas, total } = useCarrito()
+  const navigate = useNavigate()
   const [nombre, setNombre] = useState("")
   const [correo, setCorreo] = useState("")
   const [errores, setErrores] = useState({})
@@ -27,11 +29,37 @@ const Checkout = () => {
     return nuevos
   }
 
+  function redirigirADemo() {
+    // Sin backend (npm run dev) no hay Stripe: se guarda una orden simulada
+    // para poder compartir la demo por un link sin claves reales.
+    const sessionId = `demo-${Date.now()}`
+    const numeroOrden = `BP-${sessionId.replace(/[^a-zA-Z0-9]/g, "").slice(-8).toUpperCase()}`
+    const ordenDemo = {
+      numeroOrden,
+      correo,
+      nombre: nombre.trim(),
+      lineas: lineas.map(({ producto, cantidad }) => ({
+        id: producto.id,
+        nombre: producto.nombre,
+        cantidad,
+        importe: producto.precio * cantidad,
+      })),
+      total,
+      correoEnviado: false,
+    }
+    sessionStorage.setItem(`demo-orden:${sessionId}`, JSON.stringify(ordenDemo))
+    navigate(`/order/confirmado?session_id=${sessionId}`)
+  }
+
   async function manejarEnvio(evento) {
     evento.preventDefault()
     const nuevos = validar()
     setErrores(nuevos)
     if (Object.keys(nuevos).length > 0) {
+      return
+    }
+    if (lineas.length === 0) {
+      setErrores({ envio: "Tu carrito está vacío." })
       return
     }
     setEnviando(true)
@@ -51,8 +79,12 @@ const Checkout = () => {
       const { url } = await respuesta.json()
       window.location = url
     } catch {
-      setEnviando(false)
-      setErrores({ envio: "Algo salió mal. Inténtalo de nuevo." })
+      try {
+        redirigirADemo()
+      } catch {
+        setEnviando(false)
+        setErrores({ envio: "Algo salió mal. Inténtalo de nuevo." })
+      }
     }
   }
 
