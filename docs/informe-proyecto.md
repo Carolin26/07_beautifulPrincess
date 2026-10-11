@@ -15,12 +15,12 @@
 | Coordinador del grupo | Jerson Marcial Vilca Puma                                 |
 | Integrantes del grupo | Grupo número 1 — ver tabla siguiente                      |
 
-| N°  | Nombres y apellidos          | Código | Rol en el equipo |
-| --- | ---------------------------- | ------ | ---------------- |
-| 1   | Jerson Marcial Vilca Puma    |        | Coordinador      |
-| 2   | Leslie Denisse Arias Alcalá  |        |                  |
-| 3   | Ylan Cleiver Cardozo Gonzales|        |                  |
-| 4   | Joy Carolin Narro Garcia     |        |                  |
+| N°  | Nombres y apellidos               | Código | Rol en el equipo |
+| --- | --------------------------------- | ------ | ---------------- |
+| 1   | Jerson Marcial Vilca Puma         |        | Coordinador      |
+| 2   | Leslie Denisse Arias Alcalá       |        |                  |
+| 3   | Ratsinller Franco Vilchez Mendoza |        |                  |
+| 4   | Joy Carolin Narro Garcia          |        |                  |
 
 ## Introducción
 
