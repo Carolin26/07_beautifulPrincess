@@ -68,7 +68,10 @@ export function guardarPedido(
 
   const clienteId = buscarOCrearCliente(rutaClientes, correo, nombre)
   const items = lineas.map((linea) => ({
-    productoId: catalogo.find((p) => p.nombre === linea.nombre)?.id ?? null,
+    productoId:
+      linea.productoId ??
+      catalogo.find((p) => p.nombre === linea.nombre)?.id ??
+      null,
     cantidad: linea.cantidad,
     importe: linea.importe,
   }))
@@ -117,7 +120,7 @@ export default async function handler(req, res) {
   let sesion
   try {
     sesion = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ["line_items"],
+      expand: ["line_items.data.price.product"],
     })
   } catch {
     return res.status(400).json({ error: "Sesión desconocida" })
@@ -134,6 +137,9 @@ export default async function handler(req, res) {
   const lineas = sesion.line_items.data.map((linea) => ({
     id: linea.id,
     nombre: linea.description,
+    // Sesiones creadas antes de guardar el id en la metadata no lo traen:
+    // guardarPedido cae entonces a buscar el producto por nombre.
+    productoId: Number(linea.price?.product?.metadata?.productoId) || null,
     cantidad: linea.quantity,
     importe: linea.amount_total,
   }))
