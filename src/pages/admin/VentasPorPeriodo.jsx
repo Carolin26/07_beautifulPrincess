@@ -1,7 +1,8 @@
 import { useState } from "react"
-import pedidos from "../../../data/pedidos.json"
+import { usePedidos } from "../../hooks/usePedidos"
 import { ventasPorPeriodo } from "../../utils/agregaciones"
 import { formatearPrecio } from "../../utils/moneda"
+import EstadoCarga from "./EstadoCarga"
 
 const hoy = () => new Date().toISOString().slice(0, 10)
 const haceDias = (dias) =>
@@ -10,6 +11,7 @@ const haceDias = (dias) =>
 const VentasPorPeriodo = () => {
   const [desde, setDesde] = useState(haceDias(90))
   const [hasta, setHasta] = useState(hoy())
+  const { pedidos, cargando, error } = usePedidos()
 
   // "hasta" es una fecha sin hora (input type="date"); se extiende al final
   // del día para no excluir pedidos hechos ese mismo día.
@@ -42,7 +44,9 @@ const VentasPorPeriodo = () => {
           />
         </label>
       </div>
-      {cantidadPedidos === 0 ? (
+      {cargando || error ? (
+        <EstadoCarga error={error} />
+      ) : cantidadPedidos === 0 ? (
         <p>No hay pedidos en ese rango de fechas.</p>
       ) : (
         <dl className="admin__resumen">

@@ -173,6 +173,12 @@ de Vercel el sistema de archivos es efímero entre invocaciones: la escritura
 no falla, pero tampoco persiste de una visita a otra. Para un proyecto de
 curso alcanza; en producción se usaría una base de datos real.
 
+Las vistas de `/admin/reportes` leen esos archivos en cada visita a través de
+`GET /api/pedidos` (no se importan en el build), así que muestran los pedidos
+nuevos sin volver a compilar y los datos de clientes no quedan dentro del JS
+público. Igual que el pago, necesitan `vercel dev`: con `npm run dev` la API
+no corre y los reportes muestran un aviso.
+
 ## Estructura
 
 ```
