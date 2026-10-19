@@ -179,6 +179,22 @@ nuevos sin volver a compilar y los datos de clientes no quedan dentro del JS
 público. Igual que el pago, necesitan `vercel dev`: con `npm run dev` la API
 no corre y los reportes muestran un aviso.
 
+### Acceso a los reportes
+
+`/admin/reportes` pide una clave al entrar, y `/api/pedidos` solo responde si
+llega en la cabecera `Authorization: Bearer <clave>`. La clave es la variable
+`ADMIN_TOKEN`:
+
+```bash
+vercel env add ADMIN_TOKEN development   # para vercel dev
+vercel env add ADMIN_TOKEN production    # para el sitio publicado
+```
+
+Si `ADMIN_TOKEN` no está configurada, la API niega todo (responde 503) en vez
+de dejar los pedidos abiertos. La clave se recuerda solo mientras la pestaña
+esté abierta; el botón «Salir» la borra. Es una protección simple, pensada para
+el alcance del curso: no hay usuarios ni roles.
+
 ## Estructura
 
 ```
