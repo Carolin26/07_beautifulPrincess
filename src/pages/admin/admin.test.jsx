@@ -19,9 +19,9 @@ const DIA = 24 * 60 * 60 * 1000
 const soles = (monto) => `S/ ${monto}`
 const haceDias = (dias) => new Date(Date.now() - dias * DIA).toISOString()
 
-// id 1 = Pomona Ring (S/ 2,400), id 7 = Ñusta Pendant (S/ 1,560), según
-// shared/catalogo.js. El pedido 3 queda fuera de los 90 días que Ventas por
-// periodo muestra por defecto.
+// id 1 = Pomona Ring, id 7 = Ñusta Pendant, según shared/catalogo.js. Los
+// importes son propios del test, no los precios del catálogo. El pedido 3
+// queda fuera de los 90 días que Ventas por periodo muestra por defecto.
 const pedidos = [
   {
     id: 1,
