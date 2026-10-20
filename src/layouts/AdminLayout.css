@@ -119,6 +119,7 @@
 
 .admin__resumen {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-xl);
 }
 
@@ -172,4 +173,11 @@
 .admin__salir {
   margin-left: auto;
   cursor: pointer;
+}
+
+.admin__nota {
+  margin-top: var(--space-lg);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
 }
