@@ -64,3 +64,23 @@ export function ventasPorPeriodo(pedidos, desde, hasta) {
     cantidadPedidos: pedidosEnRango.length,
   }
 }
+
+// Resumen de todos los pedidos para la portada de reportes: total vendido,
+// cantidad de pedidos, ticket promedio (redondeado al centavo) y la fecha
+// del pedido más reciente (null si no hay pedidos).
+export function resumenGeneral(pedidos) {
+  const totalVendido = pedidos.reduce((suma, p) => suma + p.total, 0)
+  const cantidadPedidos = pedidos.length
+  const ultimoPedido = pedidos.reduce(
+    (ultima, p) => (ultima === null || p.fecha > ultima ? p.fecha : ultima),
+    null,
+  )
+
+  return {
+    totalVendido,
+    cantidadPedidos,
+    ticketPromedio:
+      cantidadPedidos === 0 ? 0 : Math.round(totalVendido / cantidadPedidos),
+    ultimoPedido,
+  }
+}

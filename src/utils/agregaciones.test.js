@@ -3,6 +3,7 @@ import {
   totalVendidoPorColeccion,
   productosMasVendidos,
   ventasPorPeriodo,
+  resumenGeneral,
 } from "./agregaciones"
 
 // id 1 = Pomona Ring (colección 1), id 7 = Ñusta Pendant (colección 2),
@@ -78,5 +79,25 @@ describe("ventasPorPeriodo", () => {
     )
 
     expect(resultado).toEqual({ totalVendido: 0, cantidadPedidos: 0 })
+  })
+})
+
+describe("resumenGeneral", () => {
+  it("suma todos los pedidos y toma la fecha más reciente", () => {
+    expect(resumenGeneral(pedidos)).toEqual({
+      totalVendido: 876000,
+      cantidadPedidos: 3,
+      ticketPromedio: 292000,
+      ultimoPedido: "2026-08-15T00:00:00.000Z",
+    })
+  })
+
+  it("devuelve ceros y sin fecha si no hay pedidos", () => {
+    expect(resumenGeneral([])).toEqual({
+      totalVendido: 0,
+      cantidadPedidos: 0,
+      ticketPromedio: 0,
+      ultimoPedido: null,
+    })
   })
 })
