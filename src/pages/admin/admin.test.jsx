@@ -15,9 +15,11 @@ import ProductosMasVendidos from "./ProductosMasVendidos"
 import ListadoPedidos from "./ListadoPedidos"
 
 const DIA = 24 * 60 * 60 * 1000
+// formatearPrecio usa un espacio no separable (U+00A0) tras "S/".
+const soles = (monto) => `S/ ${monto}`
 const haceDias = (dias) => new Date(Date.now() - dias * DIA).toISOString()
 
-// id 1 = Pomona Ring ($2,400), id 7 = Ñusta Pendant ($1,560), según
+// id 1 = Pomona Ring (S/ 2,400), id 7 = Ñusta Pendant (S/ 1,560), según
 // shared/catalogo.js. El pedido 3 queda fuera de los 90 días que Ventas por
 // periodo muestra por defecto.
 const pedidos = [
@@ -157,9 +159,9 @@ describe("vistas de reportes", () => {
     const valor = (etiqueta) =>
       within(resumen).getByText(etiqueta).nextElementSibling.textContent
 
-    expect(valor("Total vendido")).toBe("$8,760")
+    expect(valor("Total vendido")).toBe(soles("8,760"))
     expect(valor("Pedidos")).toBe("3")
-    expect(valor("Ticket promedio")).toBe("$2,920")
+    expect(valor("Ticket promedio")).toBe(soles("2,920"))
   })
 
   it("Resumen general avisa si no hay pedidos", async () => {
@@ -177,15 +179,20 @@ describe("vistas de reportes", () => {
     renderAdmin("/admin/reportes/ventas")
 
     const resumen = (await screen.findByText("Total vendido")).closest("dl")
-    expect(within(resumen).getByText("$6,360")).toBeTruthy()
-    expect(within(resumen).getByText("2")).toBeTruthy()
+    // Se compara textContent: getByText normaliza los espacios y no
+    // coincide con el espacio no separable de "S/".
+    const valor = (etiqueta) =>
+      within(resumen).getByText(etiqueta).nextElementSibling.textContent
+
+    expect(valor("Total vendido")).toBe(soles("6,360"))
+    expect(valor("Pedidos")).toBe("2")
 
     // Desde hace 5 días: solo queda el pedido de ayer.
     fireEvent.change(screen.getByLabelText("Desde"), {
       target: { value: haceDias(5).slice(0, 10) },
     })
-    expect(within(resumen).getByText("$4,800")).toBeTruthy()
-    expect(within(resumen).getByText("1")).toBeTruthy()
+    expect(valor("Total vendido")).toBe(soles("4,800"))
+    expect(valor("Pedidos")).toBe("1")
   })
 
   it("Productos más vendidos ordena por cantidad", async () => {
@@ -209,13 +216,13 @@ describe("vistas de reportes", () => {
         .map((fila) => fila.children[2].textContent)
 
     // Por defecto: fecha descendente (el más reciente primero).
-    expect(totales()).toEqual(["$4,800", "$1,560", "$2,400"])
+    expect(totales()).toEqual([soles("4,800"), soles("1,560"), soles("2,400")])
     expect(screen.getByText("Luis Quispe")).toBeTruthy()
 
     fireEvent.click(screen.getByRole("button", { name: /Total/ }))
-    expect(totales()).toEqual(["$1,560", "$2,400", "$4,800"])
+    expect(totales()).toEqual([soles("1,560"), soles("2,400"), soles("4,800")])
 
     fireEvent.click(screen.getByRole("button", { name: /Total/ }))
-    expect(totales()).toEqual(["$4,800", "$2,400", "$1,560"])
+    expect(totales()).toEqual([soles("4,800"), soles("2,400"), soles("1,560")])
   })
 })

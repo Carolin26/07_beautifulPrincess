@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     lineItems.push({
       quantity: cantidad,
       price_data: {
-        currency: "usd",
+        currency: "pen",
         unit_amount: producto.precio,
         // El id viaja en la metadata para que confirmar-orden no tenga que
         // adivinar el producto por su nombre.
