@@ -136,3 +136,40 @@
   font-family: var(--font-display);
   font-size: 28px;
 }
+
+.admin__acceso {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-md);
+  max-width: 420px;
+}
+
+.admin__boton {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: var(--color-light);
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admin__boton:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.admin__aviso {
+  flex-basis: 100%;
+  color: var(--color-error);
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+.admin__salir {
+  margin-left: auto;
+  cursor: pointer;
+}
