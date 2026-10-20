@@ -52,6 +52,12 @@
   font-weight: 600;
 }
 
+/* Título de cada reporte: separa el <h2> de los filtros, la tabla o el
+   resumen que vienen debajo. */
+.admin__contenido h2 {
+  margin-bottom: var(--space-md);
+}
+
 .admin__tabla {
   width: 100%;
   border-collapse: collapse;
