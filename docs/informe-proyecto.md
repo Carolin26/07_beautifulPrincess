@@ -196,7 +196,8 @@ de persistencia en JSON:
 ![Modelo entidad-relación](modelo-datos/modelo-entidad-relacion.png)
 
 **Vistas de reportes.** Las 3 vistas requeridas por el enunciado, funcionando
-con datos de prueba:
+con datos de prueba, más una portada con el resumen general. El acceso pide una
+clave de administrador (`ADMIN_TOKEN`) y los montos se muestran en soles:
 
 ![Sección de reportes](informe-proyecto/10-reportes-inicio.png)
 
