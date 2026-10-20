@@ -3,6 +3,9 @@ import { catalogo } from "../shared/catalogo.js"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
+const esCorreo = (v) =>
+  typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" })
@@ -12,6 +15,10 @@ export default async function handler(req, res) {
 
   if (!Array.isArray(items) || items.length === 0 || items.length > 20) {
     return res.status(400).json({ error: "Carrito inválido" })
+  }
+
+  if (!esCorreo(correo)) {
+    return res.status(400).json({ error: "Correo inválido" })
   }
 
   const lineItems = []
@@ -28,12 +35,22 @@ export default async function handler(req, res) {
       price_data: {
         currency: "usd",
         unit_amount: producto.precio,
-        product_data: { name: producto.nombre },
+        // El id viaja en la metadata para que confirmar-orden no tenga que
+        // adivinar el producto por su nombre.
+        product_data: {
+          name: producto.nombre,
+          metadata: { productoId: String(producto.id) },
+        },
       },
     })
   }
 
-  const origen = req.headers.origin
+  // Sin cabecera Origin (p. ej. una llamada desde curl) las URLs de retorno
+  // quedarían como "undefined/...": se usa SITE_URL como respaldo.
+  const origen = req.headers.origin ?? process.env.SITE_URL
+  if (!origen) {
+    return res.status(500).json({ error: "Falta configurar SITE_URL" })
+  }
 
   try {
     const sesion = await stripe.checkout.sessions.create({

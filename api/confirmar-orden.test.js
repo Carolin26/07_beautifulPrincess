@@ -55,6 +55,24 @@ describe("confirmar-orden", () => {
     ])
   })
 
+  it("prefiere el productoId de la metadata aunque el nombre no coincida", () => {
+    const lineas = [
+      {
+        id: "li_1",
+        nombre: "Nombre que ya no existe",
+        productoId: 6,
+        cantidad: 1,
+        importe: 45000,
+      },
+    ]
+    guardarPedido(pedidoDePrueba({ lineas, total: 45000 }), {
+      rutaClientes,
+      rutaPedidos,
+    })
+
+    expect(leerJSON(rutaPedidos)[0].items[0].productoId).toBe(6)
+  })
+
   it("no duplica el pedido si se llama dos veces con el mismo numeroOrden", () => {
     guardarPedido(pedidoDePrueba({ correoEnviado: false }), {
       rutaClientes,
