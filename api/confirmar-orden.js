@@ -88,6 +88,14 @@ export function guardarPedido(
   })
 }
 
+// Importes en céntimos -> "S/ 450.00". En el correo se muestran los
+// céntimos, a diferencia de la tienda.
+const soles = new Intl.NumberFormat("es-PE", {
+  style: "currency",
+  currency: "PEN",
+})
+const formatearSoles = (centimos) => soles.format(centimos / 100)
+
 const plantilla = ({ nombre, numeroOrden, lineas, total }) => `
   <div style="font-family: Georgia, serif; color: #1C1A16; background: #FAF7F2; padding: 40px;">
     <h1 style="font-size: 24px; font-weight: normal;">Gracias, ${escapar(nombre)}</h1>
@@ -97,12 +105,12 @@ const plantilla = ({ nombre, numeroOrden, lineas, total }) => `
         .map(
           (l) => `<tr>
             <td style="padding: 8px 0;">${escapar(l.nombre)} × ${l.cantidad}</td>
-            <td style="padding: 8px 0; text-align: right;">$${(l.importe / 100).toFixed(2)}</td>
+            <td style="padding: 8px 0; text-align: right;">${formatearSoles(l.importe)}</td>
           </tr>`,
         )
         .join("")}
     </table>
-    <p style="font-size: 20px; margin-top: 24px;">Total $${(total / 100).toFixed(2)}</p>
+    <p style="font-size: 20px; margin-top: 24px;">Total ${formatearSoles(total)}</p>
   </div>
 `
 
