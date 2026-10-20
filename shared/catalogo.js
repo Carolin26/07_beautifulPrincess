@@ -1,8 +1,11 @@
+// Precios en céntimos de sol (45000 = S/ 450). Se convirtieron desde dólares
+// con un tipo de cambio de S/ 3.43 por dólar (octubre de 2026), redondeando a
+// la decena de soles.
 export const catalogo = [
   {
     id: 1,
     nombre: "Pomona Ring",
-    precio: 240000,
+    precio: 823000,
     coleccionId: 1,
     descripcion:
       "Engastado a mano con un rubí de origen ético, terminado en nuestro taller de Lima.",
@@ -11,7 +14,7 @@ export const catalogo = [
   {
     id: 2,
     nombre: "Sillar Band",
-    precio: 68000,
+    precio: 233000,
     coleccionId: 1,
     descripcion:
       "Una banda tallada inspirada en la piedra volcánica blanca de Arequipa.",
@@ -20,7 +23,7 @@ export const catalogo = [
   {
     id: 3,
     nombre: "Amaru Signet",
-    precio: 129000,
+    precio: 442000,
     coleccionId: 1,
     descripcion:
       "Sello grabado con una serpiente, pulido a mano durante tres días.",
@@ -29,7 +32,7 @@ export const catalogo = [
   {
     id: 4,
     nombre: "Quilla Solitaire",
-    precio: 315000,
+    precio: 1080000,
     coleccionId: 1,
     descripcion: "Un solo ópalo andino en un engaste bajo y discreto.",
     material: "Oro 18k, ópalo peruano",
@@ -37,7 +40,7 @@ export const catalogo = [
   {
     id: 5,
     nombre: "Inti Dome Ring",
-    precio: 89000,
+    precio: 305000,
     coleccionId: 1,
     descripcion:
       "Un domo cepillado que atrapa la luz como el sol de la mañana.",
@@ -46,7 +49,7 @@ export const catalogo = [
   {
     id: 6,
     nombre: "Cordillera Stacking Ring",
-    precio: 45000,
+    precio: 154000,
     coleccionId: 1,
     descripcion: "Estriado como una cordillera. Hecho para llevarse de a tres.",
     material: "Plata de ley",
@@ -54,7 +57,7 @@ export const catalogo = [
   {
     id: 7,
     nombre: "Ñusta Pendant",
-    precio: 156000,
+    precio: 535000,
     coleccionId: 2,
     descripcion:
       "Una gota de crisocola en una cadena fina, tallada de una sola piedra.",
@@ -63,7 +66,7 @@ export const catalogo = [
   {
     id: 8,
     nombre: "Paracas Chain",
-    precio: 98000,
+    precio: 336000,
     coleccionId: 2,
     descripcion:
       "Cada eslabón cerrado a mano. Queda justo debajo de la clavícula.",
@@ -72,7 +75,7 @@ export const catalogo = [
   {
     id: 9,
     nombre: "Chakana Locket",
-    precio: 187000,
+    precio: 641000,
     coleccionId: 2,
     descripcion: "Una cruz andina grabada en un relicario que sí se abre.",
     material: "Oro 18k",
@@ -80,7 +83,7 @@ export const catalogo = [
   {
     id: 10,
     nombre: "Vicuña Collar",
-    precio: 264000,
+    precio: 906000,
     coleccionId: 2,
     descripcion: "Un collar mate con el peso de algo que se guarda por años.",
     material: "Oro 18k",
@@ -88,7 +91,7 @@ export const catalogo = [
   {
     id: 11,
     nombre: "Luna Nueva Pendant",
-    precio: 74000,
+    precio: 254000,
     coleccionId: 2,
     descripcion:
       "Una media luna delgada, lo bastante pequeña para dormir con ella.",
@@ -97,7 +100,7 @@ export const catalogo = [
   {
     id: 12,
     nombre: "Spondylus Strand",
-    precio: 112000,
+    precio: 384000,
     coleccionId: 2,
     descripcion:
       "Concha spondylus comerciada en esta costa durante tres mil años.",
@@ -106,7 +109,7 @@ export const catalogo = [
   {
     id: 13,
     nombre: "Killa Hoops",
-    precio: 82000,
+    precio: 281000,
     coleccionId: 3,
     descripcion: "Aros de todos los días con el borde exterior martillado.",
     material: "Baño de oro 18k",
@@ -114,7 +117,7 @@ export const catalogo = [
   {
     id: 14,
     nombre: "Filigrana Drops",
-    precio: 145000,
+    precio: 497000,
     coleccionId: 3,
     descripcion: "Filigrana tejida hilo por hilo en la tradición de Catacaos.",
     material: "Plata de ley",
@@ -122,7 +125,7 @@ export const catalogo = [
   {
     id: 15,
     nombre: "Catacaos Studs",
-    precio: 56000,
+    precio: 192000,
     coleccionId: 3,
     descripcion: "El mismo trabajo de filigrana, reducido a un arete de botón.",
     material: "Baño de oro 18k",
@@ -130,7 +133,7 @@ export const catalogo = [
   {
     id: 16,
     nombre: "Nazca Drops",
-    precio: 91000,
+    precio: 312000,
     coleccionId: 3,
     descripcion: "Una sola gota, pulida hasta que desaparecen las uniones.",
     material: "Oro 18k",
@@ -138,7 +141,7 @@ export const catalogo = [
   {
     id: 17,
     nombre: "Rodocrosita Studs",
-    precio: 128000,
+    precio: 439000,
     coleccionId: 3,
     descripcion: "Rodocrosita, la piedra nacional, tallada en aretes redondos.",
     material: "Plata de ley, rodocrosita",
@@ -146,7 +149,7 @@ export const catalogo = [
   {
     id: 18,
     nombre: "Espiga Climbers",
-    precio: 103000,
+    precio: 353000,
     coleccionId: 3,
     descripcion: "Trepadores con forma de espiga de trigo, pegados al lóbulo.",
     material: "Plata de ley",
@@ -154,7 +157,7 @@ export const catalogo = [
   {
     id: 19,
     nombre: "Cusco Cuff",
-    precio: 172000,
+    precio: 590000,
     coleccionId: 4,
     descripcion: "Martillado a mano hasta que la superficie deja de ser plana.",
     material: "Plata de ley",
@@ -162,7 +165,7 @@ export const catalogo = [
   {
     id: 20,
     nombre: "Urubamba Bangle",
-    precio: 94000,
+    precio: 322000,
     coleccionId: 4,
     descripcion: "Un aro liso con la curva de un valle de río.",
     material: "Baño de oro 18k",
@@ -170,7 +173,7 @@ export const catalogo = [
   {
     id: 21,
     nombre: "Trenza Bracelet",
-    precio: 67000,
+    precio: 230000,
     coleccionId: 4,
     descripcion:
       "Tres hebras trenzadas como trenzaban el cabello nuestras abuelas.",
@@ -179,7 +182,7 @@ export const catalogo = [
   {
     id: 22,
     nombre: "Colca Chain Bracelet",
-    precio: 138000,
+    precio: 473000,
     coleccionId: 4,
     descripcion: "Eslabones planos que se quedan quietos en la muñeca.",
     material: "Oro 18k",
@@ -187,7 +190,7 @@ export const catalogo = [
   {
     id: 23,
     nombre: "Q'ero Beaded Bracelet",
-    precio: 52000,
+    precio: 178000,
     coleccionId: 4,
     descripcion:
       "Cuentas de spondylus ensartadas entre pequeños separadores de plata.",
@@ -196,7 +199,7 @@ export const catalogo = [
   {
     id: 24,
     nombre: "Ayni Link Bracelet",
-    precio: 209000,
+    precio: 717000,
     coleccionId: 4,
     descripcion:
       "Dos piedras de crisocola engastadas en un eslabón abierto y pesado.",
