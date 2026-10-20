@@ -1,7 +1,7 @@
 import { useState } from "react"
-import pedidos from "../../../data/pedidos.json"
-import clientes from "../../../data/clientes.json"
+import { usePedidos } from "../../hooks/usePedidos"
 import { formatearPrecio } from "../../utils/moneda"
+import EstadoCarga from "./EstadoCarga"
 
 // El esquema de pedidos.json no tiene campo "estado" (un pedido solo se
 // guarda si el pago fue aprobado, ver ticket #6), así que se muestra
@@ -11,12 +11,13 @@ const EXTRACTORES = {
   total: (pedido) => pedido.total,
 }
 
-const nombreDeCliente = (clienteId) =>
+const nombreDeCliente = (clientes, clienteId) =>
   clientes.find((cliente) => cliente.id === clienteId)?.nombre ?? "Desconocido"
 
 const ListadoPedidos = () => {
   const [columna, setColumna] = useState("fecha")
   const [direccion, setDireccion] = useState("desc")
+  const { pedidos, clientes, cargando, error } = usePedidos()
 
   const alternarOrden = (columnaClic) => {
     if (columnaClic === columna) {
@@ -41,7 +42,9 @@ const ListadoPedidos = () => {
   return (
     <section>
       <h2>Listado de pedidos</h2>
-      {pedidos.length === 0 ? (
+      {cargando || error ? (
+        <EstadoCarga error={error} />
+      ) : pedidos.length === 0 ? (
         <p>Todavía no hay pedidos registrados.</p>
       ) : (
         <table className="admin__tabla">
@@ -73,7 +76,7 @@ const ListadoPedidos = () => {
             {pedidosOrdenados.map((pedido) => (
               <tr key={pedido.id}>
                 <td>{new Date(pedido.fecha).toLocaleDateString("es-PE")}</td>
-                <td>{nombreDeCliente(pedido.clienteId)}</td>
+                <td>{nombreDeCliente(clientes, pedido.clienteId)}</td>
                 <td>{formatearPrecio(pedido.total)}</td>
                 <td>{pedido.correoEnviado ? "Sí" : "No"}</td>
               </tr>

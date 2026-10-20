@@ -1,14 +1,18 @@
-import pedidos from "../../../data/pedidos.json"
+import { usePedidos } from "../../hooks/usePedidos"
 import { productosMasVendidos } from "../../utils/agregaciones"
 import { formatearPrecio } from "../../utils/moneda"
+import EstadoCarga from "./EstadoCarga"
 
 const ProductosMasVendidos = () => {
+  const { pedidos, cargando, error } = usePedidos()
   const top = productosMasVendidos(pedidos, 5)
 
   return (
     <section>
       <h2>Productos más vendidos</h2>
-      {top.length === 0 ? (
+      {cargando || error ? (
+        <EstadoCarga error={error} />
+      ) : top.length === 0 ? (
         <p>Todavía no hay pedidos registrados.</p>
       ) : (
         <table className="admin__tabla">
